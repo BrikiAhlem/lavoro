@@ -404,7 +404,7 @@ const aboutCards = [
   {
     cls: "ac3", icon: "🎨",
     title: "Creativa & Giocosa",
-    text: "Giochi educativi, disegno, lavoretti, attività creative… so rendere ogni momento divertente e arricchente per stimolare la fantasia dei bambini.",
+    text: "Giochi educativi, disegno, lavoretti, attività creative… so rendere ogni momento divertente e ricco  per stimolare la fantasia dei bambini.",
   },
   {
     cls: "ac4", icon: "📖",
@@ -446,7 +446,7 @@ const galleryItems = [
 ];
 
 const studentChips = [
-  { cls: "sc1", label: "💻 Sviluppo Web" },
+  { cls: "sc1", label: "💻 Sviluppo Web" },  
   { cls: "sc2", label: "🔥 Appassionata" },
   { cls: "sc3", label: "🌱 In crescita" },
   { cls: "sc4", label: "⚡ Motivata" },
@@ -571,13 +571,13 @@ export default function Home() {
             <div className="hero-hi">👋 Ciao, sono</div>
             <h1 className="hero-name">Ahlem Briki</h1>
             <p className="hero-role">Babysitter Appassionata</p>
-            <p className="hero-location">📍 Milano, Italia</p>
+            <p className="hero-location">📍 Firenze, Italia</p>
             <div className="hero-quote">
               "Sono la babysitter perfetta per il vostro bambino — pazienza, sicurezza e tanto amore! 🌸"
             </div>
             <div className="hero-contacts">
               <a className="contact-chip chip-phone" href="tel:+21693416030">
-                <span className="chip-icon">📞</span> +216 93 416 030
+                <span className="chip-icon">📞</span> +39 3520295175
               </a>
               <a className="contact-chip chip-email" href="mailto:ahlembriki4@gmail.com">
                 <span className="chip-icon">✉️</span> ahlembriki4@gmail.com
@@ -676,9 +676,7 @@ export default function Home() {
               <GalleryCard key={g.label} {...g} />
             ))}
           </div>
-          <p style={{ textAlign:"center", marginTop:"20px", fontSize:"13px", color:"#aaa", fontWeight:600 }}>
-            📁 Inserisci le tue foto nella cartella <code style={{background:"#f5f0ff",padding:"2px 8px",borderRadius:"6px",color:"#764ba2"}}>/assets/</code> con i nomi: gallery1.jpg … gallery6.jpg
-          </p>
+          
         </div>
       </section>
 
@@ -722,7 +720,7 @@ export default function Home() {
           "Il vostro bambino merita cure attente — me ne prendo cura con tutto il cuore." 🌿
         </p>
         <p className="q2-sub">
-          Disponibile nei giorni feriali e nel weekend · Orari flessibili · Milano e dintorni
+          Disponibile nei giorni feriali e nel weekend · Orari flessibili · firenze e d' intorni  
         </p>
       </div>
 
@@ -730,10 +728,10 @@ export default function Home() {
       <footer className="page-footer">
         <div className="footer-name">Ahlem Briki ✨</div>
         <div className="footer-links">
-          <a href="tel:+21693416030">📞 +216 93 416 030</a>
+          <a href="tel:+21693416030">📞 +39 3520295175</a>
           <a href="mailto:ahlembriki4@gmail.com">✉️ ahlembriki4@gmail.com</a>
         </div>
-        <p className="footer-copy">© 2025 Ahlem Briki · Babysitter & Studentessa di Informatica · Milano, Italia</p>
+        <p className="footer-copy">© 2026 Ahlem Briki · Babysitter & Studentessa di Informatica · firenze, Italia</p>
       </footer>
     </>
   );
@@ -745,7 +743,7 @@ function ProfilePhoto() {
   return ok ? (
     <img
       className="profile-photo"
-      src="/photo.jpg"
+      src="/assets/photo.jpg" 
       alt="Ahlem Briki"
       onError={() => setOk(false)}
     />
