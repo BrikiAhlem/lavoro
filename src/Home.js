@@ -24,7 +24,6 @@ const css = `
 html{scroll-behavior:smooth;}
 body{font-family:'Nunito',sans-serif;background:var(--cream);overflow-x:hidden;}
 
-/* ── KEYFRAMES ── */
 @keyframes drift{
   0%  {transform:translateY(110vh) rotate(0deg) scale(1);}
   50% {transform:translateY(50vh)  rotate(180deg) scale(1.1);}
@@ -44,10 +43,6 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);overflow-x:hidden;}
   0%,100%{opacity:0.2;transform:scale(0.8);}
   50%    {opacity:0.9;transform:scale(1.4);}
 }
-@keyframes pulse{
-  0%,100%{transform:scale(1);opacity:0.6;}
-  50%    {transform:scale(1.08);opacity:1;}
-}
 @keyframes slideDown{
   from{opacity:0;transform:translateY(-20px);}
   to  {opacity:1;transform:translateY(0);}
@@ -60,10 +55,6 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);overflow-x:hidden;}
   0%  {opacity:0;transform:scale(0.5) rotate(-10deg);}
   70% {transform:scale(1.1) rotate(3deg);}
   100%{opacity:1;transform:scale(1) rotate(0deg);}
-}
-@keyframes waveMove{
-  0%  {transform:translateX(0);}
-  100%{transform:translateX(-50%);}
 }
 @keyframes shimmer{
   0%  {background-position:0% 50%;}
@@ -84,15 +75,11 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);overflow-x:hidden;}
   0%,100%{text-shadow:0 0 20px rgba(255,107,107,0.3);}
   50%    {text-shadow:0 0 40px rgba(255,107,107,0.7),0 0 80px rgba(255,140,66,0.4);}
 }
-@keyframes cardFloat{
-  0%,100%{transform:translateY(0);}
-  50%    {transform:translateY(-5px);}
-}
 
-/* ── BACKGROUND CONFETTI SHAPES ── */
+/* ── BACKGROUND SHAPES ── */
 .bg-shapes{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
 .shape{position:absolute;border-radius:50%;animation:drift linear infinite;}
-.sh1{width:70px;height:70px;background:radial-gradient(circle,#FF6BB5,#FF6B6B);opacity:0.22;left:5%;animation-duration:13s;animation-delay:0s;}
+.sh1{width:70px;height:70px;background:radial-gradient(circle,#FF6BB5,#FF6B6B);opacity:0.22;left:5%;animation-duration:13s;}
 .sh2{width:50px;height:50px;background:radial-gradient(circle,#FFD93D,#FF8C42);opacity:0.28;left:18%;animation-duration:17s;animation-delay:2s;}
 .sh3{width:90px;height:90px;background:radial-gradient(circle,#48CAE4,#C77DFF);opacity:0.18;left:42%;animation-duration:11s;animation-delay:0.5s;}
 .sh4{width:55px;height:55px;background:radial-gradient(circle,#52D9A0,#48CAE4);opacity:0.25;left:67%;animation-duration:15s;animation-delay:4s;}
@@ -100,9 +87,6 @@ body{font-family:'Nunito',sans-serif;background:var(--cream);overflow-x:hidden;}
 .sh6{width:65px;height:65px;background:radial-gradient(circle,#FFDAB9,#FFD93D);opacity:0.2;left:32%;animation-duration:14s;animation-delay:6s;}
 .sh7{width:45px;height:45px;background:radial-gradient(circle,#FF6B6B,#C77DFF);opacity:0.22;left:58%;animation-duration:16s;animation-delay:3s;}
 .sh8{width:30px;height:30px;background:radial-gradient(circle,#FFD93D,#52D9A0);opacity:0.3;left:78%;animation-duration:12s;animation-delay:8s;}
-/* square & diamond shapes */
-.sq{border-radius:8px !important;}
-.dm{border-radius:4px !important;transform:rotate(45deg);}
 
 .star{position:absolute;animation:twinkle ease-in-out infinite;font-size:20px;}
 
@@ -129,55 +113,39 @@ nav{
   padding:8px 14px;border-radius:20px;
   transition:background 0.25s,color 0.25s,transform 0.2s;
 }
-.nav-links a:hover{
-  background:rgba(255,255,255,0.3);color:white;
-  transform:scale(1.08);
-}
+.nav-links a:hover{background:rgba(255,255,255,0.3);color:white;transform:scale(1.08);}
 
 /* ── HERO ── */
 .hero{
-  min-height:100vh;
-  display:flex;align-items:center;justify-content:center;
-  position:relative;z-index:1;
-  padding:100px 24px 80px;
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  position:relative;z-index:1;padding:100px 24px 80px;
   background:linear-gradient(135deg,#FFE5EC 0%,#FFF3CD 30%,#E8F8FF 60%,#F3E8FF 100%);
   overflow:hidden;
 }
-/* big decorative blobs behind hero */
-.hero-blob{position:absolute;border-radius:50%;filter:blur(0px);pointer-events:none;}
+.hero-blob{position:absolute;border-radius:50%;pointer-events:none;}
 .hb1{width:380px;height:380px;background:radial-gradient(circle,rgba(255,107,107,0.18),transparent 70%);top:-100px;left:-100px;animation:floatSlow 8s ease-in-out infinite;}
 .hb2{width:460px;height:460px;background:radial-gradient(circle,rgba(255,140,66,0.14),transparent 70%);bottom:-140px;right:-120px;animation:floatSlow 10s ease-in-out infinite reverse;}
 .hb3{width:300px;height:300px;background:radial-gradient(circle,rgba(199,125,255,0.14),transparent 70%);top:40%;left:40%;animation:floatSlow 12s ease-in-out infinite 3s;}
 
 .hero-inner{
-  display:flex;align-items:center;gap:64px;
-  max-width:1000px;width:100%;flex-wrap:wrap;justify-content:center;
-  position:relative;z-index:2;
+  display:flex;align-items:center;gap:64px;max-width:1000px;width:100%;
+  flex-wrap:wrap;justify-content:center;position:relative;z-index:2;
 }
 
 /* ── PHOTO ── */
 .hero-photo-wrap{position:relative;flex-shrink:0;}
-.ring1{
-  position:absolute;inset:-22px;border-radius:50%;
-  border:3px dashed #FF6BB5;opacity:0.5;
-  animation:spin 18s linear infinite;
+.ring1{position:absolute;inset:-22px;border-radius:50%;border:3px dashed #FF6BB5;opacity:0.5;animation:spin 18s linear infinite;}
+.ring2{position:absolute;inset:-38px;border-radius:50%;border:2px dotted #FFD93D;opacity:0.4;animation:spinReverse 24s linear infinite;}
+.ring3{position:absolute;inset:-54px;border-radius:50%;border:1.5px dashed rgba(72,202,228,0.5);animation:spin 32s linear infinite;}
+.pulse-ring{position:absolute;inset:-8px;border-radius:50%;border:4px solid rgba(255,107,107,0.3);animation:ringPulse 2s ease-in-out infinite;}
+
+.profile-photo{
+  width:230px;height:230px;border-radius:50%;object-fit:cover;
+  border:6px solid white;
+  box-shadow:0 20px 60px rgba(255,107,107,0.35),0 0 0 8px rgba(255,107,107,0.08);
+  animation:float 5s ease-in-out infinite;
 }
-.ring2{
-  position:absolute;inset:-38px;border-radius:50%;
-  border:2px dotted #FFD93D;opacity:0.4;
-  animation:spinReverse 24s linear infinite;
-}
-.ring3{
-  position:absolute;inset:-54px;border-radius:50%;
-  border:1.5px dashed rgba(72,202,228,0.5);
-  animation:spin 32s linear infinite;
-}
-.pulse-ring{
-  position:absolute;inset:-8px;border-radius:50%;
-  border:4px solid rgba(255,107,107,0.3);
-  animation:ringPulse 2s ease-in-out infinite;
-}
-.photo-placeholder{
+.photo-fallback{
   width:230px;height:230px;border-radius:50%;
   background:linear-gradient(135deg,#FF6B6B,#FF8C42,#FFD93D);
   background-size:200% 200%;
@@ -189,19 +157,15 @@ nav{
 .badge-avail{
   position:absolute;bottom:14px;right:-18px;
   background:linear-gradient(135deg,#52D9A0,#48CAE4);
-  color:white;font-size:11px;font-weight:800;
-  padding:7px 16px;border-radius:20px;
-  box-shadow:0 4px 16px rgba(82,217,160,0.4);
-  white-space:nowrap;border:2px solid white;
+  color:white;font-size:11px;font-weight:800;padding:7px 16px;border-radius:20px;
+  box-shadow:0 4px 16px rgba(82,217,160,0.4);white-space:nowrap;border:2px solid white;
   animation:bounce 2s ease-in-out infinite;
 }
 .badge-avail2{
   position:absolute;top:14px;left:-22px;
   background:linear-gradient(135deg,#C77DFF,#FF6BB5);
-  color:white;font-size:11px;font-weight:800;
-  padding:7px 14px;border-radius:20px;
-  box-shadow:0 4px 16px rgba(199,125,255,0.4);
-  white-space:nowrap;border:2px solid white;
+  color:white;font-size:11px;font-weight:800;padding:7px 14px;border-radius:20px;
+  box-shadow:0 4px 16px rgba(199,125,255,0.4);white-space:nowrap;border:2px solid white;
   animation:bounce 2.5s ease-in-out infinite 0.4s;
 }
 
@@ -209,16 +173,13 @@ nav{
 .hero-text{max-width:500px;}
 .hero-hi{
   display:inline-flex;align-items:center;gap:8px;
-  background:linear-gradient(135deg,#FF6B6B,#FF8C42);
-  color:white;font-size:14px;font-weight:800;
-  padding:7px 20px;border-radius:30px;margin-bottom:18px;
-  letter-spacing:0.5px;
+  background:linear-gradient(135deg,#FF6B6B,#FF8C42);color:white;
+  font-size:14px;font-weight:800;padding:7px 20px;border-radius:30px;margin-bottom:18px;
   box-shadow:0 6px 20px rgba(255,107,107,0.35);
   animation:popIn 0.8s cubic-bezier(0.34,1.56,0.64,1) 0.2s both;
 }
 .hero-name{
-  font-family:'Fredoka One',cursive;
-  font-size:58px;line-height:1.05;
+  font-family:'Fredoka One',cursive;font-size:58px;line-height:1.05;
   background:linear-gradient(135deg,#FF6B6B,#FF8C42,#FF6BB5);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   background-size:200% 200%;
@@ -229,99 +190,63 @@ nav{
   font-size:18px;font-weight:700;
   background:linear-gradient(90deg,#C77DFF,#48CAE4);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  margin-bottom:6px;
-  animation:fadeUp 0.8s 0.45s ease both;
+  margin-bottom:6px;animation:fadeUp 0.8s 0.45s ease both;
 }
-.hero-location{
-  font-size:14px;color:#999;margin-bottom:24px;font-weight:600;
-  animation:fadeUp 0.8s 0.55s ease both;
-}
+.hero-location{font-size:14px;color:#999;margin-bottom:24px;font-weight:600;animation:fadeUp 0.8s 0.55s ease both;}
 .hero-quote{
-  background:white;
-  border-left:5px solid;
+  background:white;border-left:5px solid;
   border-image:linear-gradient(180deg,#FF6B6B,#FF6BB5) 1;
   padding:16px 20px;border-radius:0 16px 16px 0;
-  font-size:15px;color:#555;font-style:italic;
-  margin-bottom:30px;
+  font-size:15px;color:#555;font-style:italic;margin-bottom:30px;
   box-shadow:0 6px 24px rgba(255,107,107,0.1);
-  animation:fadeUp 0.8s 0.65s ease both;
-  line-height:1.7;
+  animation:fadeUp 0.8s 0.65s ease both;line-height:1.7;
 }
-.hero-contacts{
-  display:flex;flex-direction:column;gap:12px;
-  animation:fadeUp 0.8s 0.8s ease both;
-}
+.hero-contacts{display:flex;flex-direction:column;gap:12px;animation:fadeUp 0.8s 0.8s ease both;}
 .contact-chip{
   display:inline-flex;align-items:center;gap:12px;
-  padding:12px 22px;border-radius:30px;
-  font-size:14px;font-weight:700;text-decoration:none;
+  padding:12px 22px;border-radius:30px;font-size:14px;font-weight:700;
+  text-decoration:none;border:none;cursor:pointer;
   transition:transform 0.25s,box-shadow 0.25s;
-  border:none;cursor:pointer;
 }
-.chip-phone{
-  background:linear-gradient(135deg,#FF6B6B,#FF8C42);
-  color:white;
-  box-shadow:0 6px 20px rgba(255,107,107,0.35);
-}
-.chip-email{
-  background:linear-gradient(135deg,#C77DFF,#FF6BB5);
-  color:white;
-  box-shadow:0 6px 20px rgba(199,125,255,0.35);
-}
+.chip-phone{background:linear-gradient(135deg,#FF6B6B,#FF8C42);color:white;box-shadow:0 6px 20px rgba(255,107,107,0.35);}
+.chip-email{background:linear-gradient(135deg,#C77DFF,#FF6BB5);color:white;box-shadow:0 6px 20px rgba(199,125,255,0.35);}
 .contact-chip:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 12px 32px rgba(255,107,107,0.4);}
 .chip-icon{font-size:20px;}
 
-/* ── WAVE DIVIDER ── */
-.wave-wrap{
-  height:70px;overflow:hidden;position:relative;z-index:2;
-  margin-top:-2px;
-}
+/* ── WAVE ── */
+.wave-wrap{height:70px;overflow:hidden;position:relative;z-index:2;margin-top:-2px;}
 .wave-wrap svg{display:block;}
 
-/* ── SECTION GENERIC ── */
+/* ── SECTIONS ── */
 .page-sec{position:relative;z-index:1;padding:80px 24px;}
 .sec-inner{max-width:980px;margin:0 auto;}
 .sec-badge{
   display:inline-flex;align-items:center;gap:8px;
   font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
   padding:7px 18px;border-radius:30px;margin-bottom:16px;
-  color:white;
-  box-shadow:0 4px 16px rgba(0,0,0,0.15);
+  color:white;box-shadow:0 4px 16px rgba(0,0,0,0.15);
 }
-.sec-title{
-  font-family:'Fredoka One',cursive;font-size:40px;color:#2C2C2C;
-  margin-bottom:10px;line-height:1.2;
-}
+.sec-title{font-family:'Fredoka One',cursive;font-size:40px;color:#2C2C2C;margin-bottom:10px;line-height:1.2;}
 .sec-sub{font-size:16px;color:#888;max-width:560px;line-height:1.8;margin-bottom:44px;}
 
-/* ── ABOUT SECTION ── */
-.about-section{
-  background:linear-gradient(160deg,#FFF0F5 0%,#FFFDE7 50%,#F0F9FF 100%);
-}
+/* ── ABOUT ── */
+.about-section{background:linear-gradient(160deg,#FFF0F5 0%,#FFFDE7 50%,#F0F9FF 100%);}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
 .about-card{
-  border-radius:24px;padding:32px 28px;
-  opacity:0;transform:translateY(32px);
+  border-radius:24px;padding:32px 28px;opacity:0;transform:translateY(32px);
   transition:opacity 0.65s ease,transform 0.65s ease,box-shadow 0.3s;
   position:relative;overflow:hidden;
 }
 .about-card.visible{opacity:1;transform:translateY(0);}
-.about-card::before{
-  content:'';position:absolute;inset:0;opacity:0.07;
-  background:inherit;filter:brightness(0.5);
-  transition:opacity 0.3s;
-}
 .about-card:hover{transform:translateY(-8px) scale(1.01) !important;box-shadow:0 24px 60px rgba(0,0,0,0.12);}
 .ac1{background:linear-gradient(135deg,#FFE5EC,#FFC8DD);border:2px solid #FF6BB5;box-shadow:0 8px 32px rgba(255,107,181,0.15);}
 .ac2{background:linear-gradient(135deg,#FFF3CD,#FFE066);border:2px solid #FFD93D;box-shadow:0 8px 32px rgba(255,217,61,0.2);}
 .ac3{background:linear-gradient(135deg,#E0FBFC,#C8F5FA);border:2px solid #48CAE4;box-shadow:0 8px 32px rgba(72,202,228,0.15);}
 .ac4{background:linear-gradient(135deg,#EDE7F6,#D9B8FF);border:2px solid #C77DFF;box-shadow:0 8px 32px rgba(199,125,255,0.15);}
 .about-card .card-icon-wrap{
-  width:60px;height:60px;border-radius:18px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:30px;margin-bottom:16px;
-  background:rgba(255,255,255,0.7);
-  box-shadow:0 4px 14px rgba(0,0,0,0.08);
+  width:60px;height:60px;border-radius:18px;display:flex;align-items:center;
+  justify-content:center;font-size:30px;margin-bottom:16px;
+  background:rgba(255,255,255,0.7);box-shadow:0 4px 14px rgba(0,0,0,0.08);
 }
 .about-card h3{font-family:'Fredoka One',cursive;font-size:22px;color:#2C2C2C;margin-bottom:10px;}
 .about-card p{font-size:14px;color:#555;line-height:1.75;}
@@ -329,44 +254,28 @@ nav{
 /* ── QUOTE BANNER ── */
 .quote-banner{
   background:linear-gradient(135deg,#FF6B6B,#FF8C42,#FFD93D);
-  background-size:200% 200%;
-  animation:shimmer 6s ease infinite;
-  padding:70px 24px;text-align:center;
-  position:relative;overflow:hidden;z-index:1;
+  background-size:200% 200%;animation:shimmer 6s ease infinite;
+  padding:70px 24px;text-align:center;position:relative;overflow:hidden;z-index:1;
 }
 .qb-bubbles{position:absolute;inset:0;pointer-events:none;}
-.qb-bubble{
-  position:absolute;border-radius:50%;
-  background:rgba(255,255,255,0.12);
-  animation:floatSlow ease-in-out infinite;
-}
-.qb-text{
-  font-family:'Fredoka One',cursive;font-size:34px;color:white;
-  max-width:740px;margin:0 auto 16px;line-height:1.4;
-  text-shadow:0 3px 16px rgba(0,0,0,0.15);
-}
+.qb-bubble{position:absolute;border-radius:50%;background:rgba(255,255,255,0.12);animation:floatSlow ease-in-out infinite;}
+.qb-text{font-family:'Fredoka One',cursive;font-size:34px;color:white;max-width:740px;margin:0 auto 16px;line-height:1.4;text-shadow:0 3px 16px rgba(0,0,0,0.15);}
 .qb-sub{font-size:17px;color:rgba(255,255,255,0.9);max-width:520px;margin:0 auto;font-weight:600;}
 
-/* ── EXP SECTION ── */
-.exp-section{
-  background:linear-gradient(160deg,#F8F0FF 0%,#FFF5F5 50%,#F0FFFE 100%);
-}
+/* ── EXP ── */
+.exp-section{background:linear-gradient(160deg,#F8F0FF 0%,#FFF5F5 50%,#F0FFFE 100%);}
 .exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .exp-card{
   border-radius:24px;padding:32px 24px;text-align:center;
   opacity:0;transform:translateY(32px);
-  transition:opacity 0.65s ease,transform 0.65s ease;
-  position:relative;overflow:hidden;
+  transition:opacity 0.65s ease,transform 0.65s ease;position:relative;overflow:hidden;
 }
 .exp-card.visible{opacity:1;transform:translateY(0);}
 .exp-card:hover{transform:translateY(-10px) !important;}
 .ec1{background:linear-gradient(160deg,#FFE5EC,#FFC8DD);border:2px solid #FF6BB5;box-shadow:0 8px 32px rgba(255,107,181,0.18);}
 .ec2{background:linear-gradient(160deg,#FFF3CD,#FFE599);border:2px solid #FFD93D;box-shadow:0 8px 32px rgba(255,217,61,0.2);}
 .ec3{background:linear-gradient(160deg,#E3F9F0,#B5EAD7);border:2px solid #52D9A0;box-shadow:0 8px 32px rgba(82,217,160,0.18);}
-.exp-card .emo{
-  font-size:50px;margin-bottom:14px;display:block;
-  animation:bounce 2.5s ease-in-out infinite;
-}
+.exp-card .emo{font-size:50px;margin-bottom:14px;display:block;animation:bounce 2.5s ease-in-out infinite;}
 .exp-card:nth-child(2) .emo{animation-delay:0.3s;}
 .exp-card:nth-child(3) .emo{animation-delay:0.6s;}
 .exp-card .age{
@@ -379,19 +288,20 @@ nav{
 .exp-card p{font-size:13px;color:#666;line-height:1.7;}
 
 /* ── GALLERY ── */
-.gallery-section{
-  background:linear-gradient(160deg,#E8F8FF 0%,#FFF0F5 50%,#FFFDE7 100%);
-}
+.gallery-section{background:linear-gradient(160deg,#E8F8FF 0%,#FFF0F5 50%,#FFFDE7 100%);}
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
 .gallery-item{
-  border-radius:24px;overflow:hidden;aspect-ratio:1/1;
-  cursor:pointer;
+  border-radius:24px;overflow:hidden;aspect-ratio:1/1;cursor:pointer;
   box-shadow:0 8px 28px rgba(0,0,0,0.1);
   transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.35s,opacity 0.5s;
   opacity:0;
 }
 .gallery-item.visible{opacity:1;}
 .gallery-item:hover{transform:scale(1.06) rotate(1.5deg);box-shadow:0 20px 50px rgba(0,0,0,0.18);}
+/* real image fills the card */
+.gallery-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s;}
+.gallery-item:hover .gallery-img{transform:scale(1.08);}
+/* fallback colored placeholder */
 .gallery-placeholder{
   width:100%;height:100%;min-height:170px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -412,25 +322,18 @@ nav{
 .gallery-item:nth-child(6) .g-icon{animation-delay:1s;}
 
 /* ── STUDENT ── */
-.student-section{
-  background:linear-gradient(160deg,#F3E8FF 0%,#E8F8FF 60%,#FFF3CD 100%);
-}
+.student-section{background:linear-gradient(160deg,#F3E8FF 0%,#E8F8FF 60%,#FFF3CD 100%);}
 .student-inner{display:flex;align-items:center;gap:64px;flex-wrap:wrap;}
 .student-visual{
   flex-shrink:0;width:290px;height:290px;border-radius:36px;
-  background:linear-gradient(135deg,#667eea,#C77DFF,#FF6BB5);
-  background-size:200% 200%;
+  background:linear-gradient(135deg,#667eea,#C77DFF,#FF6BB5);background-size:200% 200%;
   animation:shimmer 5s ease infinite, floatSlow 5s ease-in-out infinite;
   display:flex;align-items:center;justify-content:center;font-size:96px;
-  box-shadow:0 24px 70px rgba(199,125,255,0.35);
-  border:4px solid white;
+  box-shadow:0 24px 70px rgba(199,125,255,0.35);border:4px solid white;
 }
 .student-content{flex:1;min-width:280px;}
 .student-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
-.stu-chip{
-  font-size:12px;font-weight:800;padding:7px 16px;border-radius:20px;
-  color:white;box-shadow:0 4px 14px rgba(0,0,0,0.12);
-}
+.stu-chip{font-size:12px;font-weight:800;padding:7px 16px;border-radius:20px;color:white;box-shadow:0 4px 14px rgba(0,0,0,0.12);}
 .sc1{background:linear-gradient(135deg,#667eea,#C77DFF);}
 .sc2{background:linear-gradient(135deg,#FF6B6B,#FF8C42);}
 .sc3{background:linear-gradient(135deg,#52D9A0,#48CAE4);}
@@ -440,22 +343,16 @@ nav{
 /* ── QUOTE 2 ── */
 .quote2{
   background:linear-gradient(135deg,#48CAE4,#52D9A0,#C77DFF);
-  background-size:200% 200%;
-  animation:shimmer 7s ease infinite;
+  background-size:200% 200%;animation:shimmer 7s ease infinite;
   padding:70px 24px;text-align:center;z-index:1;position:relative;
 }
-.q2-text{
-  font-family:'Fredoka One',cursive;font-size:30px;color:white;
-  max-width:700px;margin:0 auto 14px;line-height:1.45;
-  text-shadow:0 3px 16px rgba(0,0,0,0.15);
-}
+.q2-text{font-family:'Fredoka One',cursive;font-size:30px;color:white;max-width:700px;margin:0 auto 14px;line-height:1.45;text-shadow:0 3px 16px rgba(0,0,0,0.15);}
 .q2-sub{font-size:16px;color:rgba(255,255,255,0.92);max-width:480px;margin:0 auto;font-weight:600;}
 
 /* ── FOOTER ── */
 .page-footer{
   background:linear-gradient(135deg,#2C2C2C,#1a1a1a);
-  padding:48px 24px;text-align:center;position:relative;z-index:1;
-  overflow:hidden;
+  padding:48px 24px;text-align:center;position:relative;z-index:1;overflow:hidden;
 }
 .page-footer::before{
   content:'';position:absolute;top:0;left:0;right:0;height:4px;
@@ -468,18 +365,13 @@ nav{
   margin-bottom:10px;
 }
 .footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:16px;flex-wrap:wrap;}
-.footer-links a{
-  color:#bbb;text-decoration:none;font-size:13px;font-weight:700;
-  transition:color 0.3s;
-}
+.footer-links a{color:#bbb;text-decoration:none;font-size:13px;font-weight:700;transition:color 0.3s;}
 .footer-links a:hover{color:#FF6BB5;}
 .footer-copy{font-size:12px;color:#555;}
 
-/* ── REVEAL UTIL ── */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.65s ease,transform 0.65s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 
-/* ── RESPONSIVE ── */
 @media(max-width:700px){
   .hero-inner{flex-direction:column;text-align:center;}
   .hero-contacts{align-items:center;}
@@ -496,65 +388,126 @@ nav{
 }
 `;
 
+/* ─── DATI IN ITALIANO ─── */
+
 const aboutCards = [
-  { cls:"ac1", icon:"🤍", title:"Responsable & Fiable",   text:"Je prends très au sérieux la sécurité et le bien-être des enfants. Les parents peuvent avoir une totale confiance en moi — ponctuelle, sérieuse et toujours disponible." },
-  { cls:"ac2", icon:"🌸", title:"Patiente & Douce",        text:"J'ai une patience naturelle avec les enfants. Je sais m'adapter à chaque enfant, respecter son rythme et créer un environnement chaleureux et rassurant." },
-  { cls:"ac3", icon:"🎨", title:"Créative & Ludique",      text:"Jeux éducatifs, dessin, bricolage, activités créatives… je sais rendre chaque moment amusant et enrichissant pour stimuler l'imagination." },
-  { cls:"ac4", icon:"📖", title:"Aide aux devoirs",        text:"Grâce à mes études en informatique, j'aide aussi les enfants dans leurs devoirs avec patience et méthode pédagogique adaptée." },
+  {
+    cls: "ac1", icon: "🤍",
+    title: "Responsabile & Affidabile",
+    text: "Prendo molto sul serio la sicurezza e il benessere dei bambini. I genitori possono fidarsi completamente di me — sono puntuale, seria e sempre disponibile.",
+  },
+  {
+    cls: "ac2", icon: "🌸",
+    title: "Paziente & Dolce",
+    text: "Ho una pazienza naturale con i bambini. So adattarmi a ogni bambino, rispettare i suoi ritmi e creare un ambiente caldo e rassicurante.",
+  },
+  {
+    cls: "ac3", icon: "🎨",
+    title: "Creativa & Giocosa",
+    text: "Giochi educativi, disegno, lavoretti, attività creative… so rendere ogni momento divertente e arricchente per stimolare la fantasia dei bambini.",
+  },
+  {
+    cls: "ac4", icon: "📖",
+    title: "Aiuto con i compiti",
+    text: "Grazie ai miei studi in informatica e sviluppo, aiuto anche i bambini con i compiti con pazienza e un metodo pedagogico adatto.",
+  },
 ];
 
 const expCards = [
-  { cls:"ec1", emo:"🍼", age:"0 – 3 ans",  title:"Tout-petits",         text:"Soins, biberons, jeux sensoriels, berceuses, promenades. Douceur et attention maximale pour les bébés." },
-  { cls:"ec2", emo:"🧸", age:"3 – 7 ans",  title:"Petits enfants",      text:"Jeux de rôle, dessin, contes, activités motrices. L'âge magique de la curiosité et de l'imagination." },
-  { cls:"ec3", emo:"🎒", age:"7 – 12 ans", title:"Enfants scolarisés",  text:"Aide aux devoirs, jeux de société, activités numériques, sport et sorties culturelles." },
+  {
+    cls: "ec1", emo: "🍼", age: "0 – 3 anni",
+    title: "Neonati",
+    text: "Cura, biberon, giochi sensoriali, ninne nanne, passeggiate. Dolcezza e massima attenzione per i più piccoli.",
+  },
+  {
+    cls: "ec2", emo: "🧸", age: "3 – 7 anni",
+    title: "Bambini piccoli",
+    text: "Giochi di ruolo, disegno, favole, attività motorie. L'età magica della curiosità e dell'immaginazione.",
+  },
+  {
+    cls: "ec3", emo: "🎒", age: "7 – 12 anni",
+    title: "Bambini in età scolare",
+    text: "Aiuto compiti, giochi da tavolo, attività digitali educative, sport e uscite culturali.",
+  },
 ];
 
+/*
+  GALLERIA — percorsi immagini nella cartella /assets/
+  Rinomina i tuoi file come indicato oppure cambia i nomi src qui sotto.
+  Se un'immagine non viene trovata, viene mostrata la card colorata di fallback.
+*/
 const galleryItems = [
-  { cls:"gp1", icon:"🎨", label:"Dessin & Peinture" },
-  { cls:"gp2", icon:"🧩", label:"Puzzles & Jeux" },
-  { cls:"gp3", icon:"📚", label:"Lecture & Contes" },
-  { cls:"gp4", icon:"🌿", label:"Plein Air" },
-  { cls:"gp5", icon:"🍪", label:"Cuisine Enfants" },
-  { cls:"gp6", icon:"🎭", label:"Jeux de Rôle" },
+  { src: "/assets/gallery1.jpg", cls: "gp1", icon: "🎨", label: "Disegno & Pittura" },
+  { src: "/assets/gallery2.jpg", cls: "gp2", icon: "🧩", label: "Puzzle & Giochi" },
+  { src: "/assets/gallery3.jpg", cls: "gp3", icon: "📚", label: "Lettura & Favole" },
+  { src: "/assets/gallery4.jpg", cls: "gp4", icon: "🌿", label: "Attività all'Aperto" },
+  { src: "/assets/gallery5.jpg", cls: "gp5", icon: "🍪", label: "Cucina per Bambini" },
+  { src: "/assets/gallery6.jpg", cls: "gp6", icon: "🎭", label: "Giochi di Ruolo" },
 ];
 
 const studentChips = [
-  { cls:"sc1", label:"💻 Développement Web" },
-  { cls:"sc2", label:"🔥 Passionnée" },
-  { cls:"sc3", label:"🌱 En croissance" },
-  { cls:"sc4", label:"⚡ Motivée" },
-  { cls:"sc5", label:"🎓 Étudiante" },
+  { cls: "sc1", label: "💻 Sviluppo Web" },
+  { cls: "sc2", label: "🔥 Appassionata" },
+  { cls: "sc3", label: "🌱 In crescita" },
+  { cls: "sc4", label: "⚡ Motivata" },
+  { cls: "sc5", label: "🎓 Studentessa" },
 ];
 
-/* Wave SVG divider component */
+/* ─── WAVE DIVIDER ─── */
 function Wave({ fill, bg }) {
   return (
     <div className="wave-wrap" style={{ background: bg }}>
-      <svg viewBox="0 0 1200 70" preserveAspectRatio="none" style={{ width:"100%", height:"70px" }}>
+      <svg viewBox="0 0 1200 70" preserveAspectRatio="none" style={{ width: "100%", height: "70px" }}>
         <path d="M0,35 C200,70 400,0 600,35 C800,70 1000,0 1200,35 L1200,70 L0,70 Z" fill={fill} />
       </svg>
     </div>
   );
 }
 
+/* ─── GALLERY CARD — mostra immagine o fallback colorato ─── */
+function GalleryCard({ src, cls, icon, label }) {
+  const [imgOk, setImgOk] = useState(true);
+  return (
+    <div className="gallery-item">
+      {imgOk ? (
+        <img
+          className="gallery-img"
+          src={src}
+          alt={label}
+          onError={() => setImgOk(false)}
+        />
+      ) : (
+        <div className={`gallery-placeholder ${cls}`}>
+          <div className="g-icon">{icon}</div>
+          <span>{label}</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ─── MAIN COMPONENT ─── */
 export default function Home() {
   const [navScrolled, setNavScrolled] = useState(false);
 
   useEffect(() => {
-    // Scroll reveal
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add("visible");
-          e.target.querySelectorAll(".about-card, .exp-card, .gallery-item").forEach((c, i) => {
-            setTimeout(() => c.classList.add("visible"), i * 120);
-          });
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll(".reveal, .about-grid, .exp-grid, .gallery-grid").forEach((el) => obs.observe(el));
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("visible");
+            e.target
+              .querySelectorAll(".about-card, .exp-card, .gallery-item")
+              .forEach((c, i) => setTimeout(() => c.classList.add("visible"), i * 120));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    document
+      .querySelectorAll(".reveal, .about-grid, .exp-grid, .gallery-grid")
+      .forEach((el) => obs.observe(el));
 
-    // Nav shadow on scroll
     const onScroll = () => setNavScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => { obs.disconnect(); window.removeEventListener("scroll", onScroll); };
@@ -564,56 +517,63 @@ export default function Home() {
     <>
       <style>{css}</style>
 
-      {/* ── FLOATING BACKGROUND ── */}
+      {/* ── SFONDO ANIMATO ── */}
       <div className="bg-shapes">
         {["sh1","sh2","sh3","sh4","sh5","sh6","sh7","sh8"].map((c) => (
           <div key={c} className={`shape ${c}`} />
         ))}
         {[
-          {top:"8%", left:"12%", delay:"0s"}, {top:"20%", left:"75%", delay:"0.8s"},
-          {top:"55%", left:"6%", delay:"1.6s"}, {top:"70%", left:"88%", delay:"0.4s"},
-          {top:"40%", left:"48%", delay:"1.2s"}, {top:"88%", left:"35%", delay:"2s"},
+          { top:"8%",  left:"12%", delay:"0s",   dur:"2.5s" },
+          { top:"20%", left:"75%", delay:"0.8s",  dur:"2.9s" },
+          { top:"55%", left:"6%",  delay:"1.6s",  dur:"3.3s" },
+          { top:"70%", left:"88%", delay:"0.4s",  dur:"2.7s" },
+          { top:"40%", left:"48%", delay:"1.2s",  dur:"3.1s" },
+          { top:"88%", left:"35%", delay:"2s",    dur:"3.5s" },
         ].map((s, i) => (
-          <div key={i} className="star" style={{ top:s.top, left:s.left, animationDelay:s.delay, animationDuration:`${2.5+i*0.4}s` }}>
+          <div
+            key={i} className="star"
+            style={{ top:s.top, left:s.left, animationDelay:s.delay, animationDuration:s.dur }}
+          >
             {["⭐","🌟","✨","💫","🌸","🎀"][i]}
           </div>
         ))}
       </div>
 
-      {/* ── NAVBAR ── */}
-      <nav style={ navScrolled ? { boxShadow:"0 6px 30px rgba(255,107,107,0.5)" } : {} }>
+      {/* ── NAVBAR (in italiano) ── */}
+      <nav style={navScrolled ? { boxShadow:"0 6px 30px rgba(255,107,107,0.5)" } : {}}>
         <div className="nav-logo">Ahlem <span>🌸</span></div>
         <div className="nav-links">
-          <a href="#about">À propos</a>
-          <a href="#experience">Expérience</a>
-          <a href="#gallery">Galerie</a>
-          <a href="#contact">Contact</a>
+          <a href="#about">Chi sono</a>
+          <a href="#experience">Esperienza</a>
+          <a href="#gallery">Galleria</a>
+          <a href="#contact">Contatti</a>
         </div>
       </nav>
 
       {/* ── HERO ── */}
       <div className="hero" id="contact">
-        <div className="hero-blob hb1" /><div className="hero-blob hb2" /><div className="hero-blob hb3" />
+        <div className="hero-blob hb1" />
+        <div className="hero-blob hb2" />
+        <div className="hero-blob hb3" />
         <div className="hero-inner">
 
-          {/* Photo */}
+          {/* Foto profilo — metti il tuo file in /assets/photo.jpg */}
           <div className="hero-photo-wrap">
-            <div className="ring3"/><div className="ring2"/><div className="ring1"/>
-            <div className="pulse-ring"/>
-            {/* Replace with <img className="photo-placeholder" src="/photo.jpg" alt="Ahlem" style={{objectFit:"cover"}}/> */}
-            <div className="photo-placeholder">👩‍💻</div>
-            <div className="badge-avail">✅ Disponible</div>
-            <div className="badge-avail2">🎓 Étudiante</div>
+            <div className="ring3" /><div className="ring2" /><div className="ring1" />
+            <div className="pulse-ring" />
+            <ProfilePhoto />
+            <div className="badge-avail">✅ Disponibile</div>
+            <div className="badge-avail2">🎓 Studentessa</div>
           </div>
 
-          {/* Text */}
+          {/* Testo hero */}
           <div className="hero-text">
-            <div className="hero-hi">👋 Bonjour, je suis</div>
+            <div className="hero-hi">👋 Ciao, sono</div>
             <h1 className="hero-name">Ahlem Briki</h1>
-            <p className="hero-role">Babysitter Passionnée</p>
-            <p className="hero-location">📍 Milano, Italie</p>
+            <p className="hero-role">Babysitter Appassionata</p>
+            <p className="hero-location">📍 Milano, Italia</p>
             <div className="hero-quote">
-              "Je suis la babysitter parfaite pour votre enfant — patience, sécurité et beaucoup d'amour ! 🌸"
+              "Sono la babysitter perfetta per il vostro bambino — pazienza, sicurezza e tanto amore! 🌸"
             </div>
             <div className="hero-contacts">
               <a className="contact-chip chip-phone" href="tel:+21693416030">
@@ -627,16 +587,20 @@ export default function Home() {
         </div>
       </div>
 
-      {/* wave into about */}
       <Wave fill="#FFF0F5" bg="linear-gradient(160deg,#FFE5EC,#FFF3CD)" />
 
-      {/* ── À PROPOS ── */}
+      {/* ── CHI SONO ── */}
       <section className="page-sec about-section" id="about">
         <div className="sec-inner">
           <div className="reveal">
-            <div className="sec-badge" style={{ background:"linear-gradient(135deg,#FF6BB5,#FF6B6B)" }}>💜 À propos de moi</div>
-            <h2 className="sec-title">Qui suis-je ?</h2>
-            <p className="sec-sub">Une jeune femme responsable, douce et passionnée par le bien-être des enfants. Chaque enfant mérite le meilleur soin, et c'est ce que j'offre.</p>
+            <div className="sec-badge" style={{ background:"linear-gradient(135deg,#FF6BB5,#FF6B6B)" }}>
+              💜 Chi sono
+            </div>
+            <h2 className="sec-title">Chi sono io?</h2>
+            <p className="sec-sub">
+              Una giovane donna responsabile, dolce e appassionata del benessere dei bambini.
+              Ogni bambino merita le migliori cure, ed è quello che offro.
+            </p>
           </div>
           <div className="about-grid">
             {aboutCards.map((c) => (
@@ -653,21 +617,34 @@ export default function Home() {
       {/* ── QUOTE BANNER 1 ── */}
       <div className="quote-banner">
         <div className="qb-bubbles">
-          {[{w:80,t:"10%",l:"5%",dur:"7s"},{w:120,t:"30%",l:"80%",dur:"9s"},{w:60,t:"70%",l:"20%",dur:"6s"},{w:100,t:"60%",l:"60%",dur:"11s"}].map((b,i)=>(
-            <div key={i} className="qb-bubble" style={{width:b.w,height:b.w,top:b.t,left:b.l,animationDuration:b.dur}}/>
+          {[
+            {w:80,  t:"10%", l:"5%",  dur:"7s"},
+            {w:120, t:"30%", l:"80%", dur:"9s"},
+            {w:60,  t:"70%", l:"20%", dur:"6s"},
+            {w:100, t:"60%", l:"60%", dur:"11s"},
+          ].map((b, i) => (
+            <div key={i} className="qb-bubble" style={{width:b.w, height:b.w, top:b.t, left:b.l, animationDuration:b.dur}} />
           ))}
         </div>
-        <p className="qb-text">"Je prends soin de vos enfants avec patience, sécurité et beaucoup d'affection." 💛</p>
-        <p className="qb-sub">Chaque enfant est unique — je m'adapte à sa personnalité, ses besoins et son rythme.</p>
+        <p className="qb-text">
+          "Mi prendo cura dei vostri bambini con pazienza, sicurezza e tanto affetto." 💛
+        </p>
+        <p className="qb-sub">
+          Ogni bambino è unico — mi adatto alla sua personalità, ai suoi bisogni e al suo ritmo.
+        </p>
       </div>
 
-      {/* ── EXPÉRIENCE ── */}
+      {/* ── ESPERIENZA ── */}
       <section className="page-sec exp-section" id="experience">
         <div className="sec-inner">
           <div className="reveal">
-            <div className="sec-badge" style={{ background:"linear-gradient(135deg,#FFD93D,#FF8C42)" }}>🌟 Expérience</div>
-            <h2 className="sec-title">Je m'occupe de tous les âges</h2>
-            <p className="sec-sub">Des bébés aux enfants plus grands, j'adapte mes activités et mon attention à chaque tranche d'âge.</p>
+            <div className="sec-badge" style={{ background:"linear-gradient(135deg,#FFD93D,#FF8C42)" }}>
+              🌟 Esperienza
+            </div>
+            <h2 className="sec-title">Mi occupo di tutte le età</h2>
+            <p className="sec-sub">
+              Dai neonati ai bambini più grandi, adatto le mie attività e la mia attenzione a ogni fascia d'età.
+            </p>
           </div>
           <div className="exp-grid">
             {expCards.map((c) => (
@@ -682,47 +659,51 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── GALERIE ── */}
+      {/* ── GALLERIA ── */}
       <section className="page-sec gallery-section" id="gallery">
         <div className="sec-inner">
           <div className="reveal">
-            <div className="sec-badge" style={{ background:"linear-gradient(135deg,#48CAE4,#52D9A0)" }}>📸 Galerie</div>
-            <h2 className="sec-title">Activités avec les enfants</h2>
-            <p className="sec-sub">Des moments de joie, d'apprentissage et de créativité partagés ensemble.</p>
+            <div className="sec-badge" style={{ background:"linear-gradient(135deg,#48CAE4,#52D9A0)" }}>
+              📸 Galleria
+            </div>
+            <h2 className="sec-title">Attività con i bambini</h2>
+            <p className="sec-sub">
+              Momenti di gioia, apprendimento e creatività condivisi insieme.
+            </p>
           </div>
           <div className="gallery-grid">
             {galleryItems.map((g) => (
-              <div className="gallery-item" key={g.label}>
-                <div className={`gallery-placeholder ${g.cls}`}>
-                  <div className="g-icon">{g.icon}</div>
-                  <span>{g.label}</span>
-                </div>
-              </div>
+              <GalleryCard key={g.label} {...g} />
             ))}
           </div>
           <p style={{ textAlign:"center", marginTop:"20px", fontSize:"13px", color:"#aaa", fontWeight:600 }}>
-            💡 Remplacez les cases par vos vraies photos dans le code
+            📁 Inserisci le tue foto nella cartella <code style={{background:"#f5f0ff",padding:"2px 8px",borderRadius:"6px",color:"#764ba2"}}>/assets/</code> con i nomi: gallery1.jpg … gallery6.jpg
           </p>
         </div>
       </section>
 
-      {/* ── ÉTUDIANTE ── */}
+      {/* ── STUDENTESSA ── */}
       <section className="page-sec student-section">
         <div className="sec-inner">
           <div className="student-inner">
             <div className="student-visual">💻</div>
             <div className="student-content">
               <div className="reveal">
-                <div className="sec-badge" style={{ background:"linear-gradient(135deg,#C77DFF,#667eea)" }}>🎓 Étudiante</div>
-                <h2 className="sec-title">Étudiante en Informatique</h2>
+                <div className="sec-badge" style={{ background:"linear-gradient(135deg,#C77DFF,#667eea)" }}>
+                  🎓 Studentessa
+                </div>
+                <h2 className="sec-title">Studentessa di Informatica</h2>
                 <p style={{ fontSize:"15px", color:"#555", lineHeight:1.85, marginBottom:"16px" }}>
-                  Je poursuis actuellement mes études en <strong>développement informatique</strong>. Je suis passionnée par la technologie et l'apprentissage continu.
+                  Sto attualmente frequentando un corso di studi in <strong>sviluppo informatico</strong>.
+                  Sono appassionata di tecnologia e apprendimento continuo.
                 </p>
                 <p style={{ fontSize:"15px", color:"#555", lineHeight:1.85, marginBottom:"16px" }}>
-                  Je souhaite travailler comme babysitter pour <strong>financer mes études</strong> et acquérir une expérience humaine précieuse. Travailler avec les enfants m'apporte joie et épanouissement.
+                  Desidero lavorare come babysitter per <strong>finanziare i miei studi</strong> e acquisire
+                  una preziosa esperienza umana. Lavorare con i bambini mi porta gioia e soddisfazione.
                 </p>
                 <p style={{ fontSize:"15px", color:"#555", lineHeight:1.85 }}>
-                  Je suis quelqu'un de <strong>sérieux, ambitieux et organisé</strong> — les mêmes qualités que j'apporte dans ma vie de babysitter.
+                  Sono una persona <strong>seria, ambiziosa e organizzata</strong> — le stesse qualità che
+                  porto nella mia vita professionale di babysitter.
                 </p>
                 <div className="student-chips">
                   {studentChips.map((ch) => (
@@ -737,8 +718,12 @@ export default function Home() {
 
       {/* ── QUOTE 2 ── */}
       <div className="quote2">
-        <p className="q2-text">"Votre enfant mérite des soins attentionnés — je m'y engage avec tout mon cœur." 🌿</p>
-        <p className="q2-sub">Disponible en semaine et week-end · Flexible sur les horaires · Milano et environs</p>
+        <p className="q2-text">
+          "Il vostro bambino merita cure attente — me ne prendo cura con tutto il cuore." 🌿
+        </p>
+        <p className="q2-sub">
+          Disponibile nei giorni feriali e nel weekend · Orari flessibili · Milano e dintorni
+        </p>
       </div>
 
       {/* ── FOOTER ── */}
@@ -748,8 +733,23 @@ export default function Home() {
           <a href="tel:+21693416030">📞 +216 93 416 030</a>
           <a href="mailto:ahlembriki4@gmail.com">✉️ ahlembriki4@gmail.com</a>
         </div>
-        <p className="footer-copy">© 2025 Ahlem Briki · Babysitter & Étudiante en Informatique · Milano, Italie</p>
+        <p className="footer-copy">© 2025 Ahlem Briki · Babysitter & Studentessa di Informatica · Milano, Italia</p>
       </footer>
     </>
+  );
+}
+
+/* ─── FOTO PROFILO con fallback emoji ─── */
+function ProfilePhoto() {
+  const [ok, setOk] = useState(true);
+  return ok ? (
+    <img
+      className="profile-photo"
+      src="/photo.jpg"
+      alt="Ahlem Briki"
+      onError={() => setOk(false)}
+    />
+  ) : (
+    <div className="photo-fallback">👩‍💻</div>
   );
 }
