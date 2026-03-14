@@ -576,7 +576,7 @@ export default function Home() {
               "Sono la babysitter perfetta per il vostro bambino — pazienza, sicurezza e tanto amore! 🌸"
             </div>
             <div className="hero-contacts">
-              <a className="contact-chip chip-phone" href="tel:+21693416030">
+              <a className="contact-chip chip-phone" href="tel:+39 3520295175">
                 <span className="chip-icon">📞</span> +39 3520295175
               </a>
               <a className="contact-chip chip-email" href="mailto:ahlembriki4@gmail.com">
@@ -728,7 +728,7 @@ export default function Home() {
       <footer className="page-footer">
         <div className="footer-name">Ahlem Briki ✨</div>
         <div className="footer-links">
-          <a href="tel:+21693416030">📞 +39 3520295175</a>
+          <a href="tel:+39 3520295175">📞 +39 3520295175</a>
           <a href="mailto:ahlembriki4@gmail.com">✉️ ahlembriki4@gmail.com</a>
         </div>
         <p className="footer-copy">© 2026 Ahlem Briki · Babysitter & Studentessa di Informatica · firenze, Italia</p>
